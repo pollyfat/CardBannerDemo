@@ -220,4 +220,8 @@ public class CardView extends RecyclerView implements View.OnClickListener {
                 mPostHandler.sendEmptyMessage(0);
         }
     }
+
+    public int getCurrentIndex() {
+        return (int) findViewAtCenter().getTag(R.id.key_position);
+    }
 }

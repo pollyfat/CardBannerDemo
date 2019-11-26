@@ -5,7 +5,6 @@ import android.content.res.TypedArray;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PagerSnapHelper;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -238,4 +237,31 @@ public class CardBanner extends FrameLayout {
         handler.removeCallbacks(task);
     }
 
+    private int currentIndex = 0;
+    public void setOnIndexChangeListener(final OnIndexChangeListener listener) {
+        cardView.setOnScrollListener(new CardView.OnScrollListener() {
+            @Override
+            public void onScrollChanged(int l, int t, int oldl, int oldt) {
+
+            }
+
+            @Override
+            public void onScrollStateChanged(int state) {
+                if (state == 0) {
+                    if (currentIndex != cardView.getCurrentIndex()) {
+                        listener.indexChange(cardView.getCurrentIndex());
+                    }
+                }
+            }
+
+            @Override
+            public void onScrolled(int dx, int dy) {
+
+            }
+        });
+    }
+
+    interface OnIndexChangeListener {
+        void indexChange(int index);
+    }
 }
