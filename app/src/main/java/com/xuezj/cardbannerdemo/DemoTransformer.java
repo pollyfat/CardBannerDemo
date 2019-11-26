@@ -1,6 +1,6 @@
 package com.xuezj.cardbannerdemo;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 
 import com.xuezj.cardbanner.mode.BaseTransformer;
